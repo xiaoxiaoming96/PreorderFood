@@ -28,7 +28,6 @@ function StepOne() {
             mealCategory,
             peopleNum
         }}
-        style={{ maxWidth: 600 }}
         onFinish={()=>{
             stepData[KEY] = form.getFieldsValue()
             stepData[NEXT_STEP_KEY] = {}

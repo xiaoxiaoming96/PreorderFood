@@ -10,13 +10,18 @@ const StepFormButtonGroup = (props: Props) => {
     const { currentStep, setCurrentStep, form, stepNum } = props
     return (
         <Form.Item>
-            <Space>
-                {currentStep > 0 ? <Button type="primary" onClick={() => {
+            <Space 
+                style={{
+                    display: 'flex',
+                    flexDirection: 'row',
+                    justifyContent: currentStep <= 0 ? 'flex-end' : 'space-between',
+            }}>
+                {currentStep > 0 ? <Button onClick={() => {
                     setCurrentStep(currentStep - 1)
                 }}>
                     Previous
                 </Button> : null}
-                <Button onClick={()=>{
+                <Button type="primary" onClick={()=>{
                     form.submit()
                 }}>
                     { currentStep < stepNum -1 ? 'Next' : 'Submit' }

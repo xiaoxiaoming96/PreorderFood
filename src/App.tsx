@@ -45,7 +45,7 @@ function App() {
           stepData,
           setStepData
         }}>
-          <div style={{ marginTop: 20 }}>
+          <div style={{ marginTop: 20, width: '100vh', display: 'flex', justifyContent: 'center', flexDirection: 'row' }}>
             { showStepModule }
           </div>
         </StepFormContext.Provider>

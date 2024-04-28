@@ -1,4 +1,4 @@
-import { Form } from "antd";
+import { Form, Space } from "antd";
 import { useContext } from "react";
 import { StepFormContext } from "../App";
 import StepFormButtonGroup from "../components/StepFormButtonGroup";
@@ -26,7 +26,7 @@ function Review() {
             console.info("Restaurant: ", restaurant)
             console.info("Dishes: ", selectedDishes?.map((selectedDish: Record<string, any>)=>{
                 return (
-                    <div>{`${selectedDish.name}-${selectedDish.num}`}</div>
+                    `${selectedDish.name}-${selectedDish.num}`
                 )
             }))
         }}
@@ -49,18 +49,23 @@ function Review() {
         >
             {restaurant}
         </Form.Item>
-        <Form.Item
-            label={'Dishes'}
-        >   
-            <div>
-                {
-                    selectedDishes?.map((selectedDish: Record<string, any>)=>{
-                        return (
-                            <div>{`${selectedDish.name}-${selectedDish.num}`}</div>
-                        )
-                    })
-                }
-            </div>
+        <Form.Item>   
+            <Space style={{
+                display: 'flex',
+                flexDirection: 'row',
+                alignItems: 'flex-start'
+            }}>
+                <div>Dishes：</div>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    {
+                        selectedDishes?.map((selectedDish: Record<string, any>)=>{
+                            return (
+                                <div key={selectedDish.id}>{`${selectedDish.name}-${selectedDish.num}`}</div>
+                            )
+                        })
+                    }
+                </div>          
+            </Space>
         </Form.Item>
         <StepFormButtonGroup {...{ currentStep, setCurrentStep, form, stepNum }} />
       </Form>

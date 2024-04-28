@@ -32,7 +32,6 @@ function StepThree() {
       <Form
         layout="vertical"
         form={form}
-        style={{ maxWidth: 600 }}
         onFinish={()=>{
             stepData[KEY] = form.getFieldsValue()
             stepData[NEXT_STEP_KEY] = {}
@@ -51,6 +50,7 @@ function StepThree() {
         >
             <Select
                 mode="multiple"
+                style={{ maxWidth: 300 }}
                 allowClear
                 options={dishOptions}
                 defaultValue={initialSelectedDishIds}
@@ -105,9 +105,9 @@ function StepThree() {
                         </Space>
                     )
                 })}
-                <Form.Item>
-                <Form.ErrorList errors={errors} />
-                </Form.Item>
+                {errors.length > 0 ? <Form.Item>
+                    <Form.ErrorList errors={errors} />
+                </Form.Item> : null}
             </>
             )
         }}
